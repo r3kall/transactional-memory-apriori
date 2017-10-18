@@ -10,8 +10,8 @@ int main(int argc, char* argv[]) {
     FILE *fptr;
     FILE *optr;
 
-    if (argc != 3) {
-        printf("Usage: %s filename nprocs\n",argv[0]);
+    if (argc != 4) {
+        printf("Usage: %s filename nprocs path\n",argv[0]);
         exit(1);
     }
     nprocs = atoi(argv[2]);
@@ -50,8 +50,9 @@ int main(int argc, char* argv[]) {
             count[i]++;
     }
 
-    char* outfile = (char*) malloc(32);
-    strcpy(outfile, "offset_P");
+    char* outfile = (char*) malloc(256);
+    strcpy(outfile, argv[3]);
+    strcat(outfile, "/offset_P");
     strcat(outfile, argv[2]);
     strcat(outfile, ".txt");
 

@@ -539,7 +539,7 @@ void *main_proc(void *) {
    for (i=0; i<nthreads; i++) 
       tot_cand +=local_tot_cand[i];
    seconds(t2);
-   fprintf(summary,"MAIN %f ", t2-t1);
+   // fprintf(summary,"MAIN %f ", t2-t1);
    return NULL;
 }
 
@@ -582,11 +582,12 @@ void clean_up(){
 
 int main(int argc, char **argv)
 {
-   char sumfile[100];
-   
+   char sumfile[256];   
    parse_args(argc, argv);
 
-   sprintf(sumfile, "summary");
+   sprintf(sumfile, "summary-");
+   strcat(sumfile, infile);
+
    if ((summary = fopen (sumfile, "a+")) == NULL){
       printf("can't open %s\n", sumfile);
       exit(-1);
@@ -596,9 +597,7 @@ int main(int argc, char **argv)
    
    init_var();
 
-   fprintf(summary, "Database %s  sup %f",
-           infile, MINSUP_PER); 
-   fprintf(summary, "nthreads=%d ", nthreads);   
+   fprintf(summary, "N-threads=%d Sup %f ", nthreads, MINSUP_PER);   
   
    if (more) main_proc(NULL);
    seconds(te);
@@ -614,30 +613,3 @@ int main(int argc, char **argv)
    fclose(summary);
    exit(0);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
