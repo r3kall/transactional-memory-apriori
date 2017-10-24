@@ -597,7 +597,7 @@ int main(int argc, char **argv)
    
    init_var();
 
-   fprintf(summary, "N-threads=%d Sup %f ", nthreads, MINSUP_PER);   
+   fprintf(summary, "N-threads %d Sup %f ", nthreads, MINSUP_PER);   
   
    if (more) main_proc(NULL);
    seconds(te);
@@ -605,7 +605,7 @@ int main(int argc, char **argv)
    double max = t_io[0];
    for (int i=1; i<nthreads; i++)
      if (t_io[i]>max) max = t_io[i]; 
-   fprintf(summary, "Cands %d Total time= %f, IO time =%f, Comp Time =%f\n ", tot_cand, te-ts, max, te-ts-max);
+   fprintf(summary, "Cands %d Total_time %f IO_time %f Comp_Time %f\n", tot_cand, te-ts, max, te-ts-max);
    // fprintf(summary, "\n");
    fflush(summary);
    fflush(stdout);

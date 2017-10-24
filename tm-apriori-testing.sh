@@ -46,7 +46,7 @@ function safeExit() {
 # -----------------------------------
 scriptName=$(basename "$0")
 args=$@  # store arguments
-N=100  # number of tests for each fixed number of threads.
+N=2  # number of tests for each fixed number of threads.
 
 
 # Set Temp Directory
