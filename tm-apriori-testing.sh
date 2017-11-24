@@ -46,7 +46,7 @@ function safeExit() {
 # -----------------------------------
 scriptName=$(basename "$0")
 args=$@  # store arguments
-N=2  # number of tests for each fixed number of threads.
+N=1  # number of tests for each fixed number of threads.
 
 
 # Set Temp Directory
@@ -114,6 +114,8 @@ function mainScript() {
 	for (( c=1; c <= $2; c++ )) ; do
 		./offsets $1 $c $tmpDir
 	done
+
+	ls $tmpDir/
 
 	# start tests
 	echo "STM Apriori Testing...START"

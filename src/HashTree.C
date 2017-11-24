@@ -135,12 +135,12 @@ int HashTree::add_element(Itemset& Value) {
       }
     }
 
-	  Count++;
-	  return Count;
-	}
+	  // Count++;
+	  // return Count;
+	} else {
 
 #if defined CCPD
-  TM_END()
+  // TM_END()
 #endif
 
 #ifdef BALT
@@ -152,19 +152,23 @@ int HashTree::add_element(Itemset& Value) {
   if (Hash_table[val] == NULL) {
 
 #if defined CCPD
-  	TM_BEGIN()
+  	// TM_BEGIN()
 #endif
 
       if (Hash_table[val] == NULL)
         Hash_table[val] = new HashTree(Depth+1, Hash_function, Threshold);
 
 #if defined CCPD
-  	TM_END()
+  	//TM_END()
 #endif
 
     }
 
   Hash_table[val]->add_element(Value);
+  }
+#if defined CCPD
+  TM_END()
+#endif
 
 #if defined CCPD
   if (is_root()){
